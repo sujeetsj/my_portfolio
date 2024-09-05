@@ -1,0 +1,238 @@
+@import '../../../style-config/mixins.scss',
+  '../../../style-config/variable.scss';
+
+.projects-showcase {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: -10px;
+  width: 100%;
+  
+  .showcase-item {
+    width: calc(33.33% - 20px);
+    margin: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    
+    @media (max-width: 1200px) {
+      width: calc(50% - 20px);
+    }
+    
+    @media (max-width: 768px) {
+      width: calc(100% - 20px);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.3s ease;
+    }
+
+    .meta-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px;
+      background-color: rgba(48, 47, 47, 0.8);
+      color: white;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+
+      h6 {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 10px;
+        color: white;
+      }
+
+      .go-to-cta {
+        display: flex;
+        justify-content: center;
+        
+        .button-89 {
+          background-color: #007bff;
+          color: white;
+          border: none;
+          padding: 8px 15px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+          font-size: 14px;
+          
+          &:hover {
+            background-color: #0056b3;
+          }
+        }
+      }
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+
+      img {
+        transform: scale(1.1);
+      }
+
+      .meta-content {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background-color: #1e1e1e;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+
+  .btn-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .modal-title {
+    color: #007bff;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  .project-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  .tech {
+    margin-bottom: 15px;
+    color: #a0a0a0;
+
+    span {
+      margin-right: 10px;
+      display: inline-flex;
+      align-items: center;
+
+      svg {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .descz {
+    color: #d0d0d0;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .features {
+    color: #d0d0d0;
+    margin-bottom: 20px;
+    padding-left: 20px;
+
+    li {
+      margin-bottom: 10px;
+    }
+  }
+
+  .project-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      font-size: 16px;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+
+      svg {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    padding: 20px;
+
+    .project-image {
+      height: 200px;
+    }
+
+    .modal-title {
+      font-size: 20px;
+    }
+
+    .project-links {
+      flex-direction: column;
+      align-items: center;
+
+      a {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+@keyframes zoomIn {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes zoomOut {
+  0% { transform: scale(1); }
+  100% { transform: scale(0); }
+}
+
+.zoomIn {
+  animation: zoomIn 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.zoomOut {
+  animation: zoomOut 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
